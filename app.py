@@ -39,7 +39,7 @@ if not os.path.exists("creditcard.csv"):
     except Exception as e:
         st.error(f"Failed to download dataset. Please upload manually.\n{e}")
 
-df = pd.read_csv("/home/appuser/.cache/kagglehub/datasets/mlg-ulb/creditcardfraud/versions/3")
+df = pd.read_csv("/home/appuser/.cache/kagglehub/datasets/mlg-ulb/creditcardfraud/versions/3/creditcard.csv")
 st.write("Dataset preview:")
 st.dataframe(df.head())
 
