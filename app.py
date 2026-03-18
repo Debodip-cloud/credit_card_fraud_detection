@@ -25,10 +25,8 @@ It also shows feature importance using SHAP explanations.
 # -------------------------
 st.header("Step 1: Load Dataset")
 st.write("Downloading Credit Card Fraud dataset from Kaggle...")
-
 import os
-if not os.path.exists("creditcard.csv"):
-    try:
+try:
     import kagglehub   # make sure kagglehub is installed and configured with your Kaggle API token
 except ImportError:
     st.error("Please install kagglehub via `pip install kagglehub` and upload your Kaggle API token.")
@@ -36,13 +34,12 @@ except ImportError:
 # Path to dataset
 if not os.path.exists("creditcard.csv"):
     try:
-        path = kagglehub.dataset_download("mlg-ulb/creditcardfraud", unzip=True)
+        path = kagglehub.dataset_download("mlg-ulb/creditcardfraud")
         st.success(f"Dataset downloaded successfully! Path: {path}")
     except Exception as e:
         st.error(f"Failed to download dataset. Please upload manually.\n{e}")
 
-
-df = pd.read_csv("creditcard.csv")
+df = pd.read_csv("/home/codespace/.cache/kagglehub/datasets/mlg-ulb/creditcardfraud/versions/3/creditcard.csv")
 st.write("Dataset preview:")
 st.dataframe(df.head())
 
